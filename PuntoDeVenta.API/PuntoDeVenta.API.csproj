@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>4cbb5c1d-375b-4d24-b8ca-e57aee62216a</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="13.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PuntoDeVenta.Application\PuntoDeVenta.Application.csproj" />
+    <ProjectReference Include="..\PuntoDeVenta.Domain\PuntoDeVenta.Domain.csproj" />
+    <ProjectReference Include="..\PuntoDeVenta.Infrastructure\PuntoDeVenta.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include=".ebextensions\install-fonts.config" CopyToPublishDirectory="Always" />
+  </ItemGroup>
+</Project>

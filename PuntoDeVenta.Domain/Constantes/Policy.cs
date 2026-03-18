@@ -1,0 +1,31 @@
+﻿namespace PuntoDeVenta.Domain.Constantes;
+
+public static class Policy
+{
+    // POLÍTICA PARA CORS, PERMITE QUE EL FRONTEND PUEDA CONSUMIR LOS SERVICIOS
+    public const string FRONTEND_POLICY = nameof(FRONTEND_POLICY);
+
+
+    // POLICIES PARA AUTORIZACIÓN ESPECIALMENTE PARA EL USUARIO ADMINISTRADOR
+    // DEBIDO A QUE ES EL QUE TIENE MÁS PERIMISOS, EN CUANTO AL CAJERO
+    // SOLO PUEDE HACER VENTAS, VER LOS PRODUCTOSM OBTNERLO PARA LA COMPRA Y
+    // DEMÁS. EL ADMINISTRADOR PUEDE HACER TODO
+  
+
+    public const string CREAR_PRODUCTO = nameof(CREAR_PRODUCTO);
+    public const string ACTUALIZAR_PRODUCTO = nameof(ACTUALIZAR_PRODUCTO);
+    public const string DESACTIVAR_PRODUCTO = nameof(DESACTIVAR_PRODUCTO);
+    public const string LISTAR_PRODUCTOS = nameof(LISTAR_PRODUCTOS);
+    public const string OBTENER_PRODUCTO = nameof(OBTENER_PRODUCTO);
+    public const string LISTAR_PRODUCTO_BAJO_EN_STOCK = nameof(LISTAR_PRODUCTO_BAJO_EN_STOCK);
+    public const string GENERAR_REPORTE_PRODUCTOS_BAJOS_EN_STOCK = nameof(GENERAR_REPORTE_PRODUCTOS_BAJOS_EN_STOCK);
+
+
+    public const string CREAR_PROVEEDOR = nameof(CREAR_PROVEEDOR);
+    public const string ACTUALIZAR_PROVEEDOR = nameof(ACTUALIZAR_PROVEEDOR);
+    public const string LISTAR_PROVEEDORES = nameof(LISTAR_PROVEEDORES);
+    public const string OBTENER_PROVEEDOR = nameof(OBTENER_PROVEEDOR);
+
+    public const string CREAR_USUARIO = nameof(CREAR_USUARIO);
+    public const string LISTAR_USUARIOS = nameof(LISTAR_USUARIOS);
+}
