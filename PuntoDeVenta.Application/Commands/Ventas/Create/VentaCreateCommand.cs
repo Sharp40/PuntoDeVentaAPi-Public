@@ -75,7 +75,9 @@ public class CrearVentaCommand
             // Verificar si cliente existe
             var checkClienteCmd = new SqlCommand("SELECT COUNT(*) FROM Clientes WHERE id_cliente = @Id", connection, transaction);
             checkClienteCmd.Parameters.AddWithValue("@Id", clienteId);
-            var exists = (int )await checkClienteCmd.ExecuteScalarAsync() > 0;
+            var clienteCountObj = await checkClienteCmd.ExecuteScalarAsync();
+            var clienteCount = Convert.ToInt32(clienteCountObj ?? 0);
+            var exists = clienteCount > 0;
 
             if (!exists)
             {

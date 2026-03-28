@@ -25,6 +25,42 @@ public class PuntoDeVentaDbContext : DbContext
             .Entity<ProductosBajosEnStock>()
             .ToView("VistaProductosBajoStockRecientes")
             .HasNoKey(); // ← Si la vista no tiene una PK clara
+
+        modelBuilder.Entity<DetalleVenta>()
+            .Property(d => d.PrecioUnitario)
+            .HasPrecision(18, 2);
+
+        modelBuilder.Entity<Producto>()
+            .Property(p => p.PrecioUnitario)
+            .HasPrecision(18, 2);
+
+        modelBuilder.Entity<Producto>()
+            .Property(p => p.PrecioVenta)
+            .HasPrecision(18, 2);
+
+        modelBuilder.Entity<ProductoEliminado>()
+            .Property(p => p.PrecioUnitario)
+            .HasPrecision(18, 2);
+
+        modelBuilder.Entity<ProductoEliminado>()
+            .Property(p => p.PrecioVenta)
+            .HasPrecision(18, 2);
+
+        modelBuilder.Entity<RegistroCaja>()
+            .Property(r => r.CambioEntregado)
+            .HasPrecision(18, 2);
+
+        modelBuilder.Entity<RegistroCaja>()
+            .Property(r => r.MontoPagado)
+            .HasPrecision(18, 2);
+
+        modelBuilder.Entity<RegistroCaja>()
+            .Property(r => r.TotalVenta)
+            .HasPrecision(18, 2);
+
+        modelBuilder.Entity<Venta>()
+            .Property(v => v.Total)
+            .HasPrecision(18, 2);
     }
 
 }

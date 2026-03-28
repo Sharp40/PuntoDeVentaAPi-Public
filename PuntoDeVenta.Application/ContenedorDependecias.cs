@@ -17,7 +17,7 @@ public static class ContenedorDependecias
 
         services.AddValidatorsFromAssembly(typeof(ContenedorDependecias).Assembly);
 
-        services.AddAutoMapper(typeof(MappingProfile).Assembly);
+        services.AddAutoMapper(_ => { }, typeof(MappingProfile).Assembly);
         services.AddScoped<CrearVentaCommand>();
 
 
