@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: backend:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ConnectionStrings__ConexionDb
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: ConexionDb
+        - name: TokenKey
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: TokenKey
+        - name: Token__Issuer
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: Token__Issuer
+        - name: Token__Audience
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: Token__Audience
+        - name: Token__ExpiresInMinutes
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: Token__ExpiresInMinutes
+        - name: Token__Key
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: Token__Key
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Development"
+        - name: Cors__AllowedOrigins__0
+          value: "http://localhost"

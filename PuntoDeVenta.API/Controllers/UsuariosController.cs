@@ -84,12 +84,13 @@ public class UsuariosController : ControllerBase
     public IActionResult Logout()
     {
         var isHttps = _httpContextAccessor.HttpContext?.Request.IsHttps ?? false;
+        var sameSite = isHttps ? SameSiteMode.None : SameSiteMode.Lax;
 
         Response.Cookies.Delete("Secure_Fingerprint", new CookieOptions
         {
             HttpOnly = true,
             Secure = isHttps,
-            SameSite = SameSiteMode.None,
+            SameSite = sameSite,
             Path = "/",
         });
 

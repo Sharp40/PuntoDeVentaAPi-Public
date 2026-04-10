@@ -45,13 +45,14 @@ public class TokenService : ITokenService
 
        
         var isHttps = _httpContextAccessor.HttpContext?.Request.IsHttps ?? false;
+        var sameSite = isHttps ? SameSiteMode.None : SameSiteMode.Lax;
 
         // Setear cookie
         var cookieOptions = new CookieOptions
         {
             HttpOnly = true,
-            Secure = isHttps, 
-            SameSite = SameSiteMode.None,
+            Secure = isHttps,
+            SameSite = sameSite,
             Path = "/",
             Expires = DateTime.UtcNow.AddDays(expireTime)
         };
