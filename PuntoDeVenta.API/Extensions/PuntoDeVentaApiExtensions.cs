@@ -38,14 +38,14 @@ public static class PuntoDeVentaApiExtensions
     public static WebApplication UseExtensionesAPI(this WebApplication app)
     {
         // Configuración de Swagger
-        if (app.Environment.IsDevelopment())
-        {
+        // if (app.Environment.IsDevelopment())
+        // {
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.ConfigObject.AdditionalItems["withCredentials"] = true;
             });
-        }
+        //}
 
         app.UseCors(Policy.FRONTEND_POLICY);
         app.UseMiddleware<Middleware.ExceptionMiddleware>();

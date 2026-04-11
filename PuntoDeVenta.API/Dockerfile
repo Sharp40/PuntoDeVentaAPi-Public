@@ -2,7 +2,6 @@
 
 # This stage is used when running from VS in fast mode (Default for Debug configuration)
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-USER $APP_UID
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
@@ -30,4 +29,7 @@ RUN dotnet publish "./PuntoDeVenta.API.csproj" -c $BUILD_CONFIGURATION -o /app/p
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+# Permisos compatibles con UID arbitrario (RHEL/Kubernetes)
+RUN chown -R 1654:0 /app && chmod -R g=u /app
+USER 1654
 ENTRYPOINT ["dotnet", "PuntoDeVenta.API.dll"]
