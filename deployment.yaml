@@ -12,9 +12,11 @@ spec:
       labels:
         app: backend
     spec:
+      imagePullSecrets:
+      - name: dockerhub-secret
       containers:
       - name: backend
-        image: backend:latest
+        image: shark350/puntodeventa-api:v1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
